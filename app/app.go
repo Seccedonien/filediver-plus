@@ -39,6 +39,7 @@ import (
 	extr_texture "github.com/xypwn/filediver/extractor/texture"
 	extr_unit "github.com/xypwn/filediver/extractor/unit"
 	extr_wwise "github.com/xypwn/filediver/extractor/wwise"
+	extr_dl_bin "github.com/xypwn/filediver/extractor/dl_bin"
 	"github.com/xypwn/filediver/steampath"
 	"github.com/xypwn/filediver/stingray"
 	"github.com/xypwn/filediver/stingray/ah_bin"
@@ -648,6 +649,12 @@ func (a *App) ExtractFile(ctx context.Context, id stingray.FileID, outDir string
 			extr = extr_bones.ExtractBonesJSON
 		case "ah_bin":
 			extr = extr_ah_bin.ExtractAhBinJSON
+		case "dl_bin":
+       		if extrFormat == "raw" {
+           extr = extr_dl_bin.ExtractDlBinRaw
+       		} else {
+           extr = extr_dl_bin.ExtractDlBinJSON
+       		}
 		case "entity":
 			extr = extr_entity.ExtractEntityJSON
 		case "shading_environment":

@@ -65,6 +65,9 @@ type Config struct {
 	Text struct {
 		Format string `cfg:"options=json,raw"`
 	} `cfg:"tags=t:strings,t:package,t:bones help='only-text-exportable formats'"`
+	DlBin struct {
+       Format string `cfg:"options=json,raw"`
+   } `cfg:"tags=t:dl_bin help='armour-set / customization-kit binary data'"`
 	Raw struct {
 		Format string `cfg:"options=separate,combined,main,stream,gpu help='how to handle the different file sub-types (each file may have a main, stream and GPU file)'"`
 	} `cfg:"help='applies to any file without an available extractor or \"raw\" as the selected format'"`
@@ -118,6 +121,7 @@ var Extractable = map[string]bool{
 	"animation":      true,
 	"strings":        true,
 	"package":        true,
+	"dl_bin":         true,
 	"bones":          true,
 }
 
